@@ -1,0 +1,126 @@
+Data --> Smallest unit , eg info in cell of excel 
+
+MetaData --> data/info/details about data 
+
+Database --> group of data stored , multiple rows & column exist.
+
+
+Types_of_DB --> structured & unstructured
+
+structured DB : r&c or tavular or excel formated data in DB. eg excel
+Mysql
+oracle
+postgresql
+
+
+unstructured DB : not in r&c -> pic,img,txt,ppt,word
+
+----------------------------
+Language to talk with databases is : SQL (structured query langauge)
+
+DDL
+DML
+DCL
+TCL
+
+======================================================================
+Goal :
+
+Installation of DB - MySQL
+Create Database in MySQL
+Create CReds for MySQL
+Run DDL,DML commands
+Small nodejs project and connect DB with it and store data.
+
+====================================================================== 
+
+Important command :
+=======================
+
+Installation :
+ 1. yum/apt repository
+ 2. From wget/curl - Third party or offical mysql respoitory
+ 3. rpm -i 
+
+check version from mysql server utself:
+1. mysql --version / mysql -V
+2. systemctl status mysqld 
+3. Get inside database server and run query : SELECT VERSION();
+
+-----------------------
+Important commands :
+
+mysql_secure_installation --> root user password setup for database server
+mysql -u root -p --> get into the database server
+SELECT VERSION();
+show databases;
+create database DevOps-20;
+
+Create user1 for my database : DevOps-20 ??? 
+CREATE USER 'user1'@'%' IDENTIFIED BY '1234';
+GRANT ALL PRIVILEGES ON . TO 'admin'@'%' WITH GRANT OPTION;
+
+
+SQL (Structured query language) :
+1. This language Used to create,fetch, alter , delete. insert, etc  data in database ().
+2. It is structured database language.
+2. We can divide SQL operations in below :
+   DDL - Data Definition Language (DDL) - CREATE,ALTER,DROP,INDEX
+   DML - Data Manipulation Language (DML) - SELECT,INSERT,UPDATE,DELETE
+   DCL - Data Control lanuage 
+   TCL -
+
+-----SQL queries----------------------------
+use <database_name>;
+
+CREATE TABLE - 
+1. how many r&c
+2. WHat will be the name of columns
+3. what will be the Datatypes
+4. what will be the table name
+5. Collect the data to dump into or INSERT into table
+
+
+
+---------------------
+1. --> 5&4
+2. --> Stud_Name,   Class,     Timing,  Batch_No
+3. --> varchar(20)   varchar(10)    float     int
+4. --> Class20
+---------------------
+
+CREATE TABLE Class20 (
+    Stud_Name varchar(20),
+    Class      varchar(10),
+    Timing     float,
+    Batch_No    int
+
+);
+
+INSERT DATA -
+1. collect the data
+2. select the table
+3. insert the data with INSERT INTO sql query
+-------------------------
+
+INSERT INTO Class20 VALUES ('harry', 'devops', 8.15, 20);
+DESCRIBE Class20;
+INSERT INTO Class20 VALUES ('rahul', 'devops', 8.15 ,20);
+INSERT INTO Class20 VALUES ('naveen', 'platform', 10.40, 22);
+INSERT INTO Class20 VALUES ('pankaj', 'java', 11:30 , 21);
+
+
+SELECT :
+Use to fetch data from table.
+SELECT */<columnname> FROM <tablename>;
+SELECT * FROM Class20;
+SELECT Stud_Name,Timing FROM Class20;
+SELECT Stud_Name,Batch_No FROM Class20;
+SELECT Batch_No FROM Class20;
+SELECT Class FROM Class20;
+SELECT Stud_Name,Timing,Class,Batch_no FROM Class20;
+
+
+conclusion:
+Created mysql database server --> created database (Devops20) --> created table(class20) inside datbase devops20 --> Insert data into table- (Class20) --> Fetch the data from table (Class20)-->
+
