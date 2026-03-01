@@ -1,0 +1,48 @@
+Data -
+What is data ?
+Ans:
+    Everything in this world is data , and it keeps generating every moment or sec.
+       example : name , id , post , message , voice mail , mail.... xyz
+    In IT :
+          Application generates data like logs , server logs , data inside file , folder , content in excel, word , pdf , ppt , images , videos all is data.
+
+Types of Data ?
+1. Valuable data --> If its valuable for you and still depends. 
+2. Not Valuable data --> If its not valuable for you.
+
+
+What is database ?
+We have applications (Facebook , watsup , instagram) (Tree) --> Generates data (mango) --> (Bora/Bhutti) Database.
+Ans:
+   Database is collection of data.
+example : table of name, table of employees , table of students , sheet/table of adhar card holders , table of indian states.
+
+Types of Database ??
+1. Tabular database --> Structured database --> database in table formate.(Excel)
+2. Non-Tabluar --> UnStructured database --> database in non table formate.(ppt,word,pdf,images,videos,text).
+------------------------------------------------------------------------------------------------------------------
+
+I need Bora/Bhutti --> Manufacturing company (kunal manufacturing lmt , shreyash manufacturing lmt , naveen plastic lmt)
+I need  Database  --> Database Types or companies (Oracle,MySql,PostgreSQL) --> Name of Databases (oracle DB , MySQL DB , PgSQL DB)
+------------------------------------------------------------------------------------------------------------------
+
+Difference b/w Database & MySQL ??
+Ans:
+ MySQL is a Database which we call as MySQL database or DB.
+ It Stores tabular formate data or data in table formate.
+ To manage the Mysql DB we uses SQL queries.
+                             (structure query language) --> WE write queries --> queries ??
+
+SELECT * 
+FROM airbnb_listings;
+
+SELECT city,id
+FROM airbnb_listings;
+
+=========================================================================================================================
+
+
+
+
+
+
