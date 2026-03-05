@@ -1,0 +1,17 @@
+The downloaded packages were saved in cache until the next successful transaction.
+You can remove cached packages by executing 'dnf clean packages'.
+Error: GPG check FAILED
+-------------------------------------------------------------------------------------
+ rpm -e gpg-pubkey-3a79bd29*
+ rpm --import https://repo.mysql.com/RPM-GPG-KEY-mysql-2023
+ rpm -qa | grep gpg
+ yum clean all
+ yum makecache
+ yum install mysql-community-server -y
+ systemctl start mysqld
+ systemctl enable mysqld
+ systemctl status mysqld
+ grep 'temporary password' /var/log/mysqld.log
+---------------------------------------------------------------------------------------
+OR (NOT RECOMMANDED FOR PROD)
+sudo dnf install mysql-community-server --nogpgcheck -y
