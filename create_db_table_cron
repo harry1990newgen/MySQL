@@ -1,0 +1,75 @@
+CREATE DATABASE student_db;
+USE student_db;
+-------------------------------------------------------------------------
+CREATE TABLE students (
+    Stud_Name VARCHAR(50),
+    Class VARCHAR(50),
+    Timing VARCHAR(10),
+    Batch_No INT
+);
+-------------------------------------------------------------------------
+INSERT INTO students (Stud_Name, Class, Timing, Batch_No) VALUES
+('harry', 'devops', '8.15', 20),
+('rahul', 'devops', '8.15', 20),
+('naveen', 'platform', '10.4', 22),
+('pankaj', 'java', '11:30', 21);
+-------------------------------------------------------------------------
+Validate database & tables :
+Show databases;
+SELECT * FROM students;
+------------------------------------------------------------------------
+
+
+Export MySQL table to SQL backup:
+mysqldump -u root -p student_db students > students_backup.sql
+
+IMPORT/Restore the sql backup:
+mysql -u root -p student_db < students_backup.sql
+
+Import Data from CSV / Excel to MySQL
+
+In Excel: { File → Save As → CSV (Comma delimited) (*.csv) }
+                                      Example: students.csv
+
+Example CSV content:
+    Stud_Name,Class,Timing,Batch_No
+    harry,devops,8.15,20
+    rahul,devops,8.15,20
+    naveen,platform,10.4,22
+    pankaj,java,11:30,21
+----------------------------------------------------------------
+Import CSV into MySQL :
+    mysql -u root -p
+    Use database;
+
+    USE student_db;
+
+Run:
+      LOAD DATA INFILE '/home/user/students.csv'
+      INTO TABLE students
+      FIELDS TERMINATED BY ','
+      LINES TERMINATED BY '\n'
+      IGNORE 1 ROWS;
+
+--------------------------------------------------------
+
+If MySQL blocks the file (very common)
+--------------------------------------------------------
+      Use LOCAL option:
+
+      LOAD DATA LOCAL INFILE '/home/user/students.csv'
+      INTO TABLE students
+      FIELDS TERMINATED BY ','
+      LINES TERMINATED BY '\n'
+      IGNORE 1 ROWS;
+-------------------------------------------------------
+Verify Imported Data
+      SELECT * FROM students;
+
+
+------------------------------------------------------
+Automation to export DB daily :
+
+   crontab -e
+   0 2 * * * mysqldump -u root -pPASSWORD student_db > /backup/student_db.sql
+
