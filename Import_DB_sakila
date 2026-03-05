@@ -1,0 +1,80 @@
+[root@slave2 .ssh]# cd /tmp/
+[root@slave2 tmp]# ll
+total 716
+-rw-r--r--. 1 root root 729655 Mar  6 02:05 sakila-db.zip
+drwx------. 3 root root     17 Mar  6 00:56 systemd-private-9b5be04013654ffe9d905b397db986e2-chronyd.service-hj4rxs
+drwx------. 3 root root     17 Mar  6 00:56 systemd-private-9b5be04013654ffe9d905b397db986e2-dbus-broker.service-22r92G
+drwx------. 3 root root     17 Mar  6 00:56 systemd-private-9b5be04013654ffe9d905b397db986e2-kdump.service-j4GvTv
+drwx------. 3 root root     17 Mar  6 00:56 systemd-private-9b5be04013654ffe9d905b397db986e2-systemd-logind.service-24qx4S
+[root@slave2 tmp]# unzip sakila-db.zip
+Archive:  sakila-db.zip
+   creating: sakila-db/
+  inflating: sakila-db/sakila-data.sql
+  inflating: sakila-db/sakila-schema.sql
+  inflating: sakila-db/sakila.mwb
+[root@slave2 tmp]# ll
+total 716
+drwxr-xr-x. 2 root root     72 Dec  1  2023 sakila-db
+-rw-r--r--. 1 root root 729655 Mar  6 02:05 sakila-db.zip
+drwx------. 3 root root     17 Mar  6 00:56 systemd-private-9b5be04013654ffe9d905b397db986e2-chronyd.service-hj4rxs
+drwx------. 3 root root     17 Mar  6 00:56 systemd-private-9b5be04013654ffe9d905b397db986e2-dbus-broker.service-22r92G
+drwx------. 3 root root     17 Mar  6 00:56 systemd-private-9b5be04013654ffe9d905b397db986e2-kdump.service-j4GvTv
+drwx------. 3 root root     17 Mar  6 00:56 systemd-private-9b5be04013654ffe9d905b397db986e2-systemd-logind.service-24qx4S
+[root@slave2 tmp]# cd sakila-db
+[root@slave2 sakila-db]# ll
+total 3340
+-rw-r--r--. 1 root root 3351749 Dec  1  2023 sakila-data.sql
+-rw-r--r--. 1 root root   40093 Dec  1  2023 sakila.mwb
+-rw-r--r--. 1 root root   24269 Dec  1  2023 sakila-schema.sql
+[root@slave2 sakila-db]# mysql -u root -p
+Enter password:
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 20
+Server version: 8.0.45 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2026, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> create database sakila;
+Query OK, 1 row affected (0.03 sec)
+
+mysql> exit
+Bye
+[root@slave2 sakila-db]# mysql -u root -p sakila < sakila-data.sql
+Enter password:
+ERROR 1146 (42S02) at line 45: Table 'sakila.actor' doesn't exist
+[root@slave2 sakila-db]# mysql -u root -p sakila < sakila-schema.sql
+Enter password:
+[root@slave2 sakila-db]# mysql -u root -p sakila < sakila-data.sql
+Enter password:
+[root@slave2 sakila-db]# mysql -u root -p
+Enter password:
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 24
+Server version: 8.0.45 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2026, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sakila             |
+| student_db         |
+| sys                |
++--------------------+
+6 rows in set (0.02 sec)
