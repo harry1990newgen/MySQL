@@ -1,0 +1,34 @@
+C:\Users\DDR\Downloads>scp -r sakila-db.zip root@192.168.1.40:/tmp
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+Someone could be eavesdropping on you right now (man-in-the-middle attack)!
+It is also possible that a host key has just been changed.
+The fingerprint for the ED25519 key sent by the remote host is
+SHA256:fKo8tYNyyrO7X2rmtVJlEAbpYnoNHnb5gXe1xX/LafY.
+Please contact your system administrator.
+Add correct host key in C:\\Users\\DDR/.ssh/known_hosts to get rid of this message.
+Offending ECDSA key in C:\\Users\\DDR/.ssh/known_hosts:21
+Host key for 192.168.1.40 has changed and you have requested strict checking.
+Host key verification failed.
+scp: Connection closed
+
+C:\Users\DDR\Downloads>ssh-keygen -R 192.168.1.40
+# Host 192.168.1.40 found: line 19
+# Host 192.168.1.40 found: line 20
+# Host 192.168.1.40 found: line 21
+C:\Users\DDR/.ssh/known_hosts updated.
+Original contents retained as C:\Users\DDR/.ssh/known_hosts.old
+
+C:\Users\DDR\Downloads>scp -r sakila-db.zip root@192.168.1.40:/tmp
+The authenticity of host '192.168.1.40 (192.168.1.40)' can't be established.
+ED25519 key fingerprint is SHA256:fKo8tYNyyrO7X2rmtVJlEAbpYnoNHnb5gXe1xX/LafY.
+This host key is known by the following other names/addresses:
+    C:\Users\DDR/.ssh/known_hosts:16: 192.168.1.48
+Are you sure you want to continue connecting (yes/no/[fingerprint])?
+Warning: Permanently added '192.168.1.40' (ED25519) to the list of known hosts.
+root@192.168.1.40's password:
+sakila-db.zip                                                                             100%  713KB  22.5MB/s   00:00
+
+C:\Users\DDR\Downloads>
