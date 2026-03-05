@@ -15,3 +15,46 @@ Error: GPG check FAILED
 ---------------------------------------------------------------------------------------
 OR (NOT RECOMMANDED FOR PROD)
 sudo dnf install mysql-community-server --nogpgcheck -y
+----------------------------------------------------------------------------------------
+
+Remove existing MySQL packages :
+rpm -qa | grep mysql
+sudo dnf remove mysql mysql-libs mysql-server -y
+sudo dnf remove mysql* -y
+sudo dnf clean all
+sudo dnf makecache
+sudo dnf install mysql-community-server -y
+sudo systemctl start mysqld
+sudo systemctl enable mysqld
+sudo systemctl status mysqld
+grep 'temporary password' /var/log/mysqld.log
+
+--------------------------------------------------------------------------------------------
+
+[root@slave2 ~]# sudo dnf install mysql-community-server -y Last metadata expiration check: 0:02:09 ago on Fri 06 Mar 2026 01:39:53 AM IST. No match for argument: mysql-community-server Error: Unable to find a match: mysql-community-server
+
+Remove old/broken MySQL repository :
+sudo rm -f /etc/yum.repos.d/mysql*
+
+Install MySQL official repository again
+sudo dnf install https://dev.mysql.com/get/mysql80-community-release-el9-1.noarch.rpm -y
+
+[root@slave2 ~]# dnf repolist | grep mysql
+mysql-connectors-community              MySQL Connectors Community
+mysql-tools-community                   MySQL Tools Community
+mysql80-community                       MySQL 8.0 Community Server
+
+Rocky Linux provides its own MySQL module which conflicts:
+sudo dnf module disable mysql -y
+
+Clean DNF cache :
+sudo dnf clean all
+sudo dnf makecache
+
+sudo dnf install mysql-community-server -y
+sudo systemctl start mysqld
+sudo systemctl enable mysqld
+sudo systemctl status mysqld
+grep 'temporary password' /var/log/mysqld.log
+dnf list available | grep mysql-community-server
+
