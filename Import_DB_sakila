@@ -112,3 +112,17 @@ mysql> show tables;
 +----------------------------+
 23 rows in set (0.00 sec)
 
+
+
+mysql> select * from actor where id=3;
+ERROR 1054 (42S22): Unknown column 'id' in 'where clause'
+mysql> select * from actor where actor_id=3;
++----------+------------+-----------+---------------------+
+| actor_id | first_name | last_name | last_update         |
++----------+------------+-----------+---------------------+
+|        3 | ED         | CHASE     | 2006-02-15 04:34:33 |
++----------+------------+-----------+---------------------+
+1 row in set (0.00 sec)
+
+mysql>
+
