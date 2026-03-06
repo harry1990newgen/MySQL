@@ -1,1 +1,37 @@
+show databases;
+use sakila;
+show tables;
+drop database <databasename-sakila>;
+SELECT * FROM city;
+SELECT * FROM actor;
+select * from actor where first_name="LISA";
+select * from actor where actor_id=52;
+
+ describe actor;
+
+
+INSERT INTO actor 
+ (actor_id,first_name,last_name,last_update)
+VALUES
+(201,"Harry","Potter","2006-02-15 04:34:33");
+
+
+DELETE FROM students
+  WHERE Stud_Name="harry";
+
+
+UPDATE students
+SET Class="DevSecOps"
+WHERE Stud_Name="Naveen" ;
+
+UPDATE students
+SET Class="Java"
+WHERE IN Stud_Name=("naveen","rahul) ;
+
+
+SELECT * FROM students
+  WHERE Class="Java"
+  AND Batch_No="22" ;
+
+
 
