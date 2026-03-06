@@ -70,6 +70,17 @@ Verify Imported Data
 ------------------------------------------------------
 Automation to export DB daily :
 
+* * * * * command-to-run
+- - - - -
+
+| | | | |
+| | | | +-- Day of Week (0-7, 0 or 7 is Sunday, or use names like MON, WED)
+| | | +---- Month (1-12, or use names like JAN, APR)
+| | +------ Day of Month (1-31)
+| +-------- Hour (0-23, 24-hour format)
++---------- Minute (0-59)
+
+
    crontab -e
-   0 2 * * * mysqldump -u root -pPASSWORD student_db > /backup/student_db.sql
+   * * * * * mysqldump -u root -pPASSWORD student_db > /backup/student_db.sql
 
