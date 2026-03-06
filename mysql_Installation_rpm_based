@@ -5,7 +5,7 @@ Update your system & Install mysql server+client_dependencies:
        systemctl start mysqld
        systemctl enable mysqld
        systemctl status mysqld
-
+------------------------------------------------------------------
 Fetch temporary password in the log file :
     grep 'temporary password' /var/log/mysqld.log
 
@@ -17,10 +17,11 @@ Run mysql secure installation + set root password :
             remove anonymous users
             disable remote root login
             remove test database
-
+-------------------------------------------------------------------
 Testing :
    mysql -u root -p
    mysql --version
+=================================================================================================================
 
 Setup firewall configuration to enable 3306(database port) :
 
@@ -31,6 +32,8 @@ Setup firewall configuration to enable 3306(database port) :
    firewall-cmd --reload
    firewall-cmd --reload
    firewall-cmd --list-ports OR  sudo firewall-cmd --list-services
+=================================================================================================================
+
 
 Allow remote MySQL connections : (default mysql service listen connections on localhost)
   vim /etc/my.cnf --> 
